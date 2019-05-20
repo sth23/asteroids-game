@@ -29,7 +29,7 @@ class BigAsteroid(Sprite):
         self.poly = PolygonAsset(self.points, noline, black)
         
         super().__init__(self.poly, (100,100))
-        self.speed = 1
+        self.speed = 2
         self.vx = self.speed * math.sin(random.random() * 2 * math.pi)
         self.vy = self.speed * math.cos(random.random() * 2 * math.pi)
     
