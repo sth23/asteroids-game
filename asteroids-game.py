@@ -58,13 +58,13 @@ class Ship(Sprite):
         Bullet((self.x + 15, self.y - 15), self.rotation)
 
     def rotateRightOn(self, event):
-        self.vr = self.rotatespeed
+        self.vr = -self.rotatespeed
         
     def rotateRightOff(self, event):
         self.vr = 0
         
     def rotateLeftOn(self, event):
-        self.vr = -self.rotatespeed
+        self.vr = self.rotatespeed
         
     def rotateLeftOff(self, event):
         self.vr = 0
