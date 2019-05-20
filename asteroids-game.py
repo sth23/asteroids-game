@@ -21,9 +21,10 @@ class Bullet(Sprite):
     
     def __init__(self, position, rotation):
         super().__init__(Bullet.circ, position)
-        self.speed = 5
-        self.vy = -1
-        self.vx = 0
+        self.speed = 10
+        self.rotation = rotation
+        self.vx = -self.speed * math.sin(self.rotation)
+        self.vy = -self.speed * math.cos(self.rotation)
         
     def step(self):
         self.x += self.vx
