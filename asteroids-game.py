@@ -17,7 +17,7 @@ whiteline = LineStyle(1, white)
 blackline = LineStyle(1, black)
 
 class Bullet(Sprite):
-    circ = CircleAsset(1, noline, black)
+    circ = CircleAsset(2, noline, black)
     
     def __init__(self, position, rotation):
         super().__init__(Bullet.circ, position)
