@@ -23,6 +23,7 @@ class Bullet(Sprite):
         super().__init__(Bullet.circ, position)
         self.speed = 10
         self.rotation = rotation
+        self.fxcenter = self.fycenter = 0
         self.vx = -self.speed * math.sin(self.rotation)
         self.vy = -self.speed * math.cos(self.rotation)
         
