@@ -67,7 +67,7 @@ class Ship(Sprite):
     def rotateLeftOn(self, event):
         self.vr = -self.rotatespeed
         
-    def moveLeftOff(self, event):
+    def rotateLeftOff(self, event):
         self.vr = 0
         
     def thrustOn(self, event):
