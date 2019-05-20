@@ -88,6 +88,11 @@ class AsteroidsGame(App):
         
         for bullet in self.getSpritesbyClass(Bullet):
             bullet.step()
+            
+            if bullet.x > self.width + 5 or bullet.x < -5:
+                bullet.destroy()
+            if bullet.y > self.height + 5 or bullet.y < -5:
+                bullet.destroy()
         
         # Wrap screen for player
         if self.player1.x > self.width + 20:
