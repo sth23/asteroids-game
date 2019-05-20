@@ -36,13 +36,15 @@ class Ship(Sprite):
         super().__init__(Ship.ship, position)
         self.gamewidth = width
         self.gameheight = height
-        self.rotatespeed = 0.05
         self.speedlimit = 7.5
         self.maxspin = 1
-        self.thrust = 0.5
+        self.thrust = 0.1
         self.vx = 0
         self.vy = 0
-        self.vr = 0.05
+        self.vr = 0
+        self.deltavx = 0
+        self.deltavy = 0
+        self.speed = 0
         self.fxcenter = self.fycenter = 0.5
         
         print(self.rotation)
@@ -71,8 +73,13 @@ class Ship(Sprite):
         self.vr = 0
         
     def thrustOn(self, event):
-        self.vx += -self.thrust * math.sin(self.rotation)
-        self.vy += -self.thrust * math.cos(self.rotation)
+        self.deltavx = -self.thrust * math.sin(self.rotation)
+        self.deltavy = -self.thrust * math.cos(self.rotation)
+        
+        # Check speed limit
+        if ((self.vx + self.deltavx)**2 + (self.vy + self.deltavy)**2)**0.5 < self.speedlimit:
+            self.vx += self.deltavx
+            self.vy += self.deltavy
         
     def step(self):
         self.x += self.vx
