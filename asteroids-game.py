@@ -94,6 +94,9 @@ class AsteroidsGame(App):
     def step(self):
         self.player1.step()
         
+        for bullet in self.getClassbySprites(Bullet):
+            bullet.step()
+        
         # Wrap screen for player
         if self.player1.x > self.width + 20:
             self.player1.x = -20
