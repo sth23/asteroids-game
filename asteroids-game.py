@@ -92,5 +92,11 @@ class AsteroidsGame(App):
     def step(self):
         self.player1.step()
         
+        # Wrap screen for player
+        if self.player1.x > self.width + 20 or self.player1.x < -20:
+            self.player1.x = -self.player1.x
+        if self.player1.y > self.height + 20 or self.player1.y < -20:
+            self.player1.y = -self.player1.y
+        
 myapp = AsteroidsGame()
 myapp.run()
