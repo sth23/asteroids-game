@@ -86,7 +86,7 @@ class Ship(Sprite):
 class AsteroidsGame(App):
     def __init__(self):
         super().__init__()
-        self.player1 = Ship((self.width / 2, self.height / 2))
+        self.player1 = Ship((self.width / 2, self.height / 2), self.width, self.height)
         
     def step(self):
         self.player1.step()
