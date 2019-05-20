@@ -42,6 +42,7 @@ class Ship(Sprite):
         self.vx = 0
         self.vy = 0
         self.vr = 0
+        self.fxcenter = self.fycenter = 0.5
         
         print(self.rotation)
         
@@ -52,7 +53,7 @@ class Ship(Sprite):
         AsteroidsGame.listenKeyEvent("keydown", "left arrow", self.rotateLeftOn)
         AsteroidsGame.listenKeyEvent("keyup", "left arrow", self.rotateLeftOff)
         AsteroidsGame.listenKeyEvent("keydown", "up arrow", self.thrustOn)
-        AsteroidsGame.listenKeyEvent("keyup", "up arrow", self.thrustOff)
+        #AsteroidsGame.listenKeyEvent("keyup", "up arrow", self.thrustOff)
         
 
     def shoot(self, event):
@@ -71,13 +72,13 @@ class Ship(Sprite):
         self.vr = 0
         
     def thrustOn(self, event):
-        self.vx = self.thrust
-        self.vy = self.thrust
-        
+        self.vx += self.thrust
+        self.vy += self.thrust
+    """    
     def thrustOff(self, event):
         self.vx = 0
         self.vy = 0
-
+    """
     def step(self):
         self.x += self.vx
         self.y += self.vy
