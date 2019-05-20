@@ -53,8 +53,6 @@ class Ship(Sprite):
         AsteroidsGame.listenKeyEvent("keydown", "left arrow", self.rotateLeftOn)
         AsteroidsGame.listenKeyEvent("keyup", "left arrow", self.rotateLeftOff)
         AsteroidsGame.listenKeyEvent("keydown", "up arrow", self.thrustOn)
-        #AsteroidsGame.listenKeyEvent("keyup", "up arrow", self.thrustOff)
-        
 
     def shoot(self, event):
         Bullet((self.x + 15, self.y - 15), self.rotation)
@@ -74,11 +72,7 @@ class Ship(Sprite):
     def thrustOn(self, event):
         self.vx += self.thrust
         self.vy += self.thrust
-    """    
-    def thrustOff(self, event):
-        self.vx = 0
-        self.vy = 0
-    """
+        
     def step(self):
         self.x += self.vx
         self.y += self.vy
