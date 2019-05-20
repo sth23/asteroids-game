@@ -71,7 +71,7 @@ class Ship(Sprite):
         
     def thrustOn(self, event):
         self.vx += self.thrust * math.sin(self.rotation)
-        self.vy += self.thrust * math.cos(self.rotation)
+        self.vy += -self.thrust * math.cos(self.rotation)
         
     def step(self):
         self.x += self.vx
