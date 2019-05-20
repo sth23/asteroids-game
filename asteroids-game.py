@@ -41,7 +41,7 @@ class Ship(Sprite):
         self.maxspin = 1
         self.thrust = 0.1
         self.vx = 0
-        self.vy = 0
+        self.vy = 0.5
         self.vr = 0
         self.deltavx = 0
         self.deltavy = 0
@@ -57,7 +57,7 @@ class Ship(Sprite):
         AsteroidsGame.listenKeyEvent("keydown", "up arrow", self.thrustOn)
 
     def shoot(self, event):
-        Bullet((self.x - 12 * math.sin(self.rotation), self.y - 15 * math.cos(self.rotation)), self.rotation)
+        Bullet((self.x - 15 * math.sin(self.rotation), self.y - 15 * math.cos(self.rotation)), self.rotation)
 
     def rotateRightOn(self, event):
         self.vr = -self.rotatespeed
