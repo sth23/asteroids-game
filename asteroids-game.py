@@ -7,6 +7,36 @@ black = Color(0x000000, 1.0)
 noline = LineStyle(0, black)
 blackline = LineStyle(1, black)
 
+class BigAsteroid(Sprite):
+    def __init__(self, width, height):
+        self.x1 = 30 + random.randint(-10,10)
+        self.y1 = 0 + random.randint(-10,10)
+        self.x2 = 60 + random.randint(-10,10)
+        self.y2 = 0 + random.randint(-10,10)
+        self.x3 = 90 + random.randint(-10,10)
+        self.y3 = 30 + random.randint(-10,10)
+        self.x4 = 90 + random.randint(-10,10)
+        self.y4 = 60 + random.randint(-10,10)
+        self.x5 = 60 + random.randint(-10,10)
+        self.y5 = 90 + random.randint(-10,10)
+        self.x6 = 30 + random.randint(-10,10)
+        self.y6 = 90 + random.randint(-10,10)
+        self.x7 = 0 + random.randint(-10,10)
+        self.y7 = 60 + random.randint(-10,10)
+        self.x8 = 0 + random.randint(-10,10)
+        self.y8 = 30 + random.randint(-10,10)
+        self.points = [(x1,y1), (x2,y2), (x3,y3), (x4,y4), (x5,y5), (x6,y6), (x7,y7), (x8,y8)
+        self.poly = PolygonAsset(self.points, noline, black)
+        
+        super().__init__(self.poly, (100,100))
+        self.speed = 1
+        self.vx = self.speed * math.sin(random.random() * 2 * math.pi)
+        self.vy = self.speed * math.cos(random.random() * 2 * math.pi)
+    
+#class MediumAsteroid(Sprite):
+    
+#class SmallAsteroid(Sprite):
+
 class Bullet(Sprite):
     circ = CircleAsset(2, noline, black)
     
@@ -82,6 +112,8 @@ class AsteroidsGame(App):
     def __init__(self):
         super().__init__()
         self.player1 = Ship((self.width / 2, self.height / 2), self.width, self.height)
+        
+        BigAsteroid(self.width, self.height)
         
     def step(self):
         self.player1.step()
