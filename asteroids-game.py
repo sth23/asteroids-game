@@ -20,7 +20,7 @@ class Bullet(Sprite):
     circ = CircleAsset(1, noline, black)
     
     def __init__(self, position, rotation):
-        super().__init__(Bullet.circ, rotation)
+        super().__init__(Bullet.circ, position)
         self.speed = 5
         self.vy = -1
         self.vx = 0
