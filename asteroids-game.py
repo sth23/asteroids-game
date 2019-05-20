@@ -57,7 +57,7 @@ class Ship(Sprite):
         
 
     def shoot(self, event):
-        Bullet((self.x + 15, self.y - 15))
+        Bullet((self.x + 15, self.y - 15), self.rotation)
 
     def rotateRightOn(self, event):
         self.vr = self.rotatespeed
