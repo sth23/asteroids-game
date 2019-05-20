@@ -25,7 +25,7 @@ class BigAsteroid(Sprite):
         self.y7 = 60 + random.randint(-10,10)
         self.x8 = 0 + random.randint(-10,10)
         self.y8 = 30 + random.randint(-10,10)
-        self.points = [(x1,y1), (x2,y2), (x3,y3), (x4,y4), (x5,y5), (x6,y6), (x7,y7), (x8,y8)]
+        self.points = [(self.x1,self.y1), (self.x2,self.y2), (self.x3,self.y3), (self.x4,self.y4), (self.x5,self.y5), (self.x6,self.y6), (self.x7,self.y7), (self.x8,self.y8)]
         self.poly = PolygonAsset(self.points, noline, black)
         
         super().__init__(self.poly, (100,100))
