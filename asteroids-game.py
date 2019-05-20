@@ -37,11 +37,12 @@ class Ship(Sprite):
         self.gamewidth = width
         self.gameheight = height
         self.rotatespeed = 0.05
-        self.speedlimit = 10
+        self.speedlimit = 7.5
+        self.maxspin = 1
         self.thrust = 0.5
         self.vx = 0
-        self.vy = -7.5
-        self.vr = 0
+        self.vy = 0
+        self.vr = 1
         self.fxcenter = self.fycenter = 0.5
         
         print(self.rotation)
