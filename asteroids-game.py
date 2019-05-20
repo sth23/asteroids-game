@@ -38,7 +38,7 @@ class Ship(Sprite):
         self.gameheight = height
         self.rotatespeed = 0.05
         self.speedlimit = 10
-        self.thrust = 1
+        self.thrust = 0.5
         self.vx = 0
         self.vy = 0
         self.vr = 0
