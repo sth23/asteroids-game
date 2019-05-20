@@ -40,7 +40,7 @@ class Ship(Sprite):
         self.speedlimit = 10
         self.thrust = 0.5
         self.vx = 0
-        self.vy = -5
+        self.vy = -7.5
         self.vr = 0
         self.fxcenter = self.fycenter = 0.5
         
