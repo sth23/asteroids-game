@@ -45,7 +45,7 @@ class Ship(Sprite):
         
         print(self.rotation)
         
-        SpaceInvadersGame.listenKeyEvent("keydown", "space", self.shoot)
+        AsteroidsGame.listenKeyEvent("keydown", "space", self.shoot)
 
         AsteroidsGame.listenKeyEvent("keydown", "right arrow", self.rotateRightOn)
         AsteroidsGame.listenKeyEvent("keyup", "right arrow", self.rotateRightOff)
