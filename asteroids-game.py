@@ -42,7 +42,7 @@ class Ship(Sprite):
         self.thrust = 0.5
         self.vx = 0
         self.vy = 0
-        self.vr = 1
+        self.vr = 0.1
         self.fxcenter = self.fycenter = 0.5
         
         print(self.rotation)
