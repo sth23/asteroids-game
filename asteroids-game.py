@@ -37,6 +37,7 @@ class Ship(Sprite):
         self.gamewidth = width
         self.gameheight = height
         self.speedlimit = 7.5
+        self.rotatespeed = 0.05
         self.maxspin = 1
         self.thrust = 0.1
         self.vx = 0
@@ -46,8 +47,6 @@ class Ship(Sprite):
         self.deltavy = 0
         self.speed = 0
         self.fxcenter = self.fycenter = 0.5
-        
-        print(self.rotation)
         
         AsteroidsGame.listenKeyEvent("keydown", "space", self.shoot)
 
