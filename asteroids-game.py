@@ -94,7 +94,7 @@ class AsteroidsGame(App):
     def step(self):
         self.player1.step()
         
-        for bullet in self.getClassbySprites(Bullet):
+        for bullet in self.getSpritesbyClass(Bullet):
             bullet.step()
         
         # Wrap screen for player
