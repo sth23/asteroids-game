@@ -91,7 +91,7 @@ class AsteroidsGame(App):
             
             if bullet.x > self.width + 5 or bullet.x < -5:
                 bullet.destroy()
-            if bullet.y > self.height + 5 or bullet.y < -5:
+            elif bullet.y > self.height + 5 or bullet.y < -5:
                 bullet.destroy()
         
         # Wrap screen for player
