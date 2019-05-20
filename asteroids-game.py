@@ -51,7 +51,7 @@ class Ship(Sprite):
         AsteroidsGame.listenKeyEvent("keyup", "right arrow", self.rotateRightOff)
         AsteroidsGame.listenKeyEvent("keydown", "left arrow", self.rotateLeftOn)
         AsteroidsGame.listenKeyEvent("keyup", "left arrow", self.rotateLeftOff)
-        AsteroidsGame.listenKeyEvent("keydown", "up arrow", self.thurstOn)
+        AsteroidsGame.listenKeyEvent("keydown", "up arrow", self.thrustOn)
         AsteroidsGame.listenKeyEvent("keyup", "up arrow", self.thrustOff)
         
 
@@ -74,7 +74,7 @@ class Ship(Sprite):
         self.vx = self.thrust
         self.vy = self.thrust
         
-    def thurstOff(self, event):
+    def thrustOff(self, event):
         self.vx = 0
         self.vy = 0
 
