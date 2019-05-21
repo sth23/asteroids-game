@@ -191,7 +191,7 @@ class Ship(Sprite):
                 self.vy += self.deltavy
         
     def step(self):
-        if self.extralives > 0:
+        if self.extralives >= 0:
             self.x += self.vx
             self.y += self.vy
             self.rotation += self.vr
