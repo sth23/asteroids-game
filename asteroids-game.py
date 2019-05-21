@@ -157,7 +157,7 @@ class AsteroidsGame(App):
         BigAsteroid(self.width, self.height)
         
     def step(self):
-        for ship in self.getSpritesbyClass(Ship)
+        for ship in self.getSpritesbyClass(Ship):
             ship.step()
             # Wrap screen for player
             if ship.x > self.width + 20:
