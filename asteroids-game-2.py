@@ -178,19 +178,21 @@ class AsteroidsGame(App):
         ShipPiece((self.player1.x + math.sin(self.player1.rotation) * self.player1.radius / 2, self.player1.y + math.cos(self.player1.rotation) * self.player1.radius / 2). self.player1.vx, self.player1.vy)
         ShipPiece((self.player1.x + math.sin(self.player1.rotation) * self.player1.radius / 2, self.player1.y + math.cos(self.player1.rotation) * self.player1.radius / 2). self.player1.vx, self.player1.vy)
         ShipPiece((self.player1.x + math.sin(self.player1.rotation) * self.player1.radius / 2, self.player1.y + math.cos(self.player1.rotation) * self.player1.radius / 2). self.player1.vx, self.player1.vy)
+        self.player1.destroy()   
    
     def resetScreen(self):
         [asteroid.destroy() for asteroid in self.getSpritesbyClass(Asteroid)]
-
-        self.player1.x = self.width / 2
-        self.player1.y = self.height / 2
-        self.player1.vx = 0
-        self.player1.vy = 0
-        self.player1.rotation = 0
-        self.player1.extralives -= 1
-        self.showExtraLives()
-        self.count = 0
-        if self.player1.extralives < 0:
+        if self.player1.extralives >= 0:
+            self.player1.x = self.width / 2
+            self.player1.y = self.height / 2
+            self.player1.vx = 0
+            self.player1.vy = 0
+            self.player1.rotation = 0
+            self.player1.extralives -= 1
+            self.showExtraLives()
+            self.count = 0
+        else:
+            self.destroyShip()
             print("Game Over")
         
     def step(self):
@@ -219,12 +221,8 @@ class AsteroidsGame(App):
             elif ship.y < -20:
                 ship.y = self.height + 20
                 
-            if ship.collidingWithSprites(Asteroid):
-                if self.player1.extralives >= 0:
-                    self.resetScreen()
-                else:
-                    self.destroyShip()
-                    self.player1.destroy()
+            if ship.collidingWithSprites(Asteroid) and self.player1.extralives >= 0:
+                self.resetScreen()
         
         for asteroid in self.getSpritesbyClass(Asteroid):
             asteroid.step()
