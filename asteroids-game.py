@@ -227,7 +227,7 @@ class AsteroidsGame(App):
         self.player1.y = self.height / 2
         self.player1.vx = 0
         self.player1.vy = 0
-        self.player1.rotaion = 0
+        self.player1.rotation = 0
         self.player1.extralives -= 1
         self.showExtraLives()
         self.count = 0
