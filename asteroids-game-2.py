@@ -35,7 +35,7 @@ class BigAsteroid(Sprite):
         self.size = size
         self.xcoordinates = [30, 60, 90, 90, 60, 30, 0, 0]
         self.ycoordinates = [0, 0, 30, 60, 90, 90, 60, 30]
-        self.randomrange = 12
+        self.range = 12
         self.radius = 45
         self.points = [None] * 8
         if size == "big":
