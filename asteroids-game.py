@@ -195,6 +195,8 @@ class AsteroidsGame(App):
         self.randx = 0
         self.randy = 0
         self.random = 0
+        self.score = 0
+        print("Score: " + str(self.score))
         
     def step(self):
         # Randomly create big asteroids that drift onto screen
@@ -283,6 +285,8 @@ class AsteroidsGame(App):
                         MediumAsteroid((big.x - math.sin(big.rotation)*90/4, big.y + math.cos(big.rotation)*90/4))
                         MediumAsteroid((big.x + math.sin(big.rotation)*90/4, big.y - math.cos(big.rotation)*90/4))
                         MediumAsteroid((big.x - math.sin(big.rotation)*90/4, big.y - math.cos(big.rotation)*90/4))
+                        self.score += 10
+                        print("Score: " + str(self.score))
                         big.destroy()
                     bullet.destroy()
                 elif self.mediumhit:
@@ -291,10 +295,14 @@ class AsteroidsGame(App):
                         SmallAsteroid((medium.x - math.sin(medium.rotation)*90/8, medium.y + math.cos(medium.rotation)*90/8))
                         SmallAsteroid((medium.x + math.sin(medium.rotation)*90/8, medium.y - math.cos(medium.rotation)*90/8))
                         SmallAsteroid((medium.x - math.sin(medium.rotation)*90/8, medium.y - math.cos(medium.rotation)*90/8))
+                        self.score += 20
+                        print("Score: " + str(self.score))
                         medium.destroy()
                     bullet.destroy()
                 elif self.smallhit:
                     for small in bullet.collidingWithSprites(SmallAsteroid):
+                        self.score += 30
+                        print("Score: " + str(self.score))
                         small.destroy()
                     bullet.destroy()
         
