@@ -33,7 +33,7 @@ class BigAsteroid(Sprite):
         self.rotation = 0
         self.vx = self.speed * math.sin(self.rotation)
         self.vy = self.speed * math.cos(self.rotation)
-        self.vr = 0.1 * math.random.random()
+        self.vr = 0.1 * random.random()
         
     def step(self):
         self.x += self.vx
