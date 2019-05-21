@@ -225,6 +225,8 @@ class AsteroidsGame(App):
                     for asteroid in self.hit:
                         if asteroid.size == "big":
                             Asteroid((asteroid.x, asteroid.y), "medium")
+                            print(asteroid.x)
+                            print(asteroid.y)
                             
                             """
                             Asteroid((asteroid.x + math.sin(asteroid.rotation) * asteroid.radius / 2, asteroid.y + math.cos(asteroid.rotation) * asteroid.radius / 2), "medium")
