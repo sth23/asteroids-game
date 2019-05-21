@@ -33,6 +33,7 @@ class BigAsteroid(Sprite):
         self.ycoordinates = [0, 0, 30, 60, 90, 90, 60, 30]
         self.range = 12
         self.points = []
+        """
         if size == "medium":
             self.range = self.range / 2
             self.xcoordinates = [x / 2 + random.randint(-self.range, self.range) for x in self.xcoordinates]
@@ -41,12 +42,10 @@ class BigAsteroid(Sprite):
             self.range = self.range / 4
             self.xcoordinates = [x / 4 + random.randint(-self.range, self.range) for x in self.xcoordinates]
             self.ycoordinates = [y / 4 + random.randint(-self.range, self.range) for y in self.ycoordinates]
+            """
             
         for z in range(0,8):
             self.points[z] = (self.xcoordinates[z], self.ycoordinates[z])
-
-
-
 
         self.poly = PolygonAsset(self.points, noline, black)
         
