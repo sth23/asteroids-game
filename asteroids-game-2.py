@@ -264,7 +264,7 @@ class AsteroidsGame(App):
                             self.score += 30
                             asteroid.destroy()
                     bullet.destroy()
-                    print("Score: " + int(self.score))
+                    print("Score: " + str(self.score))
         
 myapp = AsteroidsGame()
 myapp.run()
