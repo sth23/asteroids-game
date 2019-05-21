@@ -224,8 +224,8 @@ class AsteroidsGame(App):
                 if self.hit:
                     for asteroid in self.hit:
                         if asteroid.size == "big":
-                            print(asteroid.x)
-                            print(asteroid.y)
+                            print(int(asteroid.x))
+                            print(int(asteroid.y))
                             Asteroid((int(asteroid.x), int(asteroid.y)), "medium")
                             
                             """
