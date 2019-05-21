@@ -224,17 +224,17 @@ class AsteroidsGame(App):
                 if self.hit:
                     for asteroid in self.hit:
                         if asteroid.size == "big":
-                            MediumAsteroid((big.x + math.sin(big.rotation)*90/4, big.y + math.cos(big.rotation)*90/4))
-                            MediumAsteroid((big.x - math.sin(big.rotation)*90/4, big.y + math.cos(big.rotation)*90/4))
-                            MediumAsteroid((big.x + math.sin(big.rotation)*90/4, big.y - math.cos(big.rotation)*90/4))
-                            MediumAsteroid((big.x - math.sin(big.rotation)*90/4, big.y - math.cos(big.rotation)*90/4))
+                            Asteroid((asteroid.x + math.sin(asteroid.rotation) * asteroid.radius / 2, asteroid.y + math.cos(asteroid.rotation) * asteroid.radius / 2), "medium")
+                            Asteroid((asteroid.x - math.sin(asteroid.rotation) * asteroid.radius / 2, asteroid.y + math.cos(asteroid.rotation) * asteroid.radius / 2), "medium")
+                            Asteroid((asteroid.x + math.sin(asteroid.rotation) * asteroid.radius / 2, asteroid.y - math.cos(asteroid.rotation) * asteroid.radius / 2), "medium")
+                            Asteroid((asteroid.x - math.sin(asteroid.rotation) * asteroid.radius / 2, asteroid.y - math.cos(asteroid.rotation) * asteroid.radius / 2), "medium")
                             self.score += 10
                             asteroid.destroy()
                         elif asteroid.zise == "medium":
-                            SmallAsteroid((medium.x + math.sin(medium.rotation)*90/8, medium.y + math.cos(medium.rotation)*90/8))
-                            SmallAsteroid((medium.x - math.sin(medium.rotation)*90/8, medium.y + math.cos(medium.rotation)*90/8))
-                            SmallAsteroid((medium.x + math.sin(medium.rotation)*90/8, medium.y - math.cos(medium.rotation)*90/8))
-                            SmallAsteroid((medium.x - math.sin(medium.rotation)*90/8, medium.y - math.cos(medium.rotation)*90/8))
+                            Asteroid((asteroid.x + math.sin(asteroid.rotation) * asteroid.radius / 2, asteroid.y + math.cos(asteroid.rotation) * asteroid.radius / 2), "small")
+                            Asteroid((asteroid.x - math.sin(asteroid.rotation) * asteroid.radius / 2, asteroid.y + math.cos(asteroid.rotation) * asteroid.radius / 2), "small")
+                            Asteroid((asteroid.x + math.sin(asteroid.rotation) * asteroid.radius / 2, asteroid.y - math.cos(asteroid.rotation) * asteroid.radius / 2), "small")
+                            Asteroid((asteroid.x - math.sin(asteroid.rotation) * asteroid.radius / 2, asteroid.y - math.cos(asteroid.rotation) * asteroid.radius / 2), "small")
                             self.score += 20
                             asteroid.destroy()
                         elif asteroid.size == "small":
