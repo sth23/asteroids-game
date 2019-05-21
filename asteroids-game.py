@@ -30,7 +30,7 @@ class BigAsteroid(Sprite):
         
         super().__init__(self.poly, (100,100))
         self.speed = 1
-        self.rotation = 0
+        self.rotation = random.random() * 2 * math.pi
         self.vx = self.speed * math.sin(self.rotation)
         self.vy = self.speed * math.cos(self.rotation)
         self.vr = 0.02 * random.random()
