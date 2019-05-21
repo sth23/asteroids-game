@@ -185,15 +185,16 @@ class Ship(Sprite):
             self.deltavx = -self.thrust * math.sin(self.rotation)
             self.deltavy = -self.thrust * math.cos(self.rotation)
         
-        # Check speed limit
-        if ((self.vx + self.deltavx)**2 + (self.vy + self.deltavy)**2)**0.5 < self.speedlimit:
-            self.vx += self.deltavx
-            self.vy += self.deltavy
+            # Check speed limit
+            if ((self.vx + self.deltavx)**2 + (self.vy + self.deltavy)**2)**0.5 < self.speedlimit:
+                self.vx += self.deltavx
+                self.vy += self.deltavy
         
     def step(self):
-        self.x += self.vx
-        self.y += self.vy
-        self.rotation += self.vr
+        if self.extralives >= 0:
+            self.x += self.vx
+            self.y += self.vy
+            self.rotation += self.vr
         
 class AsteroidsGame(App):
     def __init__(self):
