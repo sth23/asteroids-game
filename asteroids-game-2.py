@@ -135,6 +135,21 @@ class Ship(Sprite):
             self.x += self.vx
             self.y += self.vy
             self.rotation += self.vr
+            
+class shipPiece(Sprite):
+    tri = PolygonAsset([(7.5,0), (15,0), (0,15)], noline, black)
+    
+    def __init__(self, position, vx, vy):
+        super().__init__(shipPiece.tri, position)
+        self.vx = vx * random.random()
+        self.vy = vy * random.random()
+        self.vr = random.random() * 0.25
+        self.rotation = 2 * math.pi * random.random()
+        
+    def step(self):
+        self.x += self.vx
+        self.y += self.vy
+        self.rotation += self.vr
         
 class AsteroidsGame(App):
     def __init__(self):
@@ -156,6 +171,9 @@ class AsteroidsGame(App):
             x.destroy()
         for x in range(0,self.player1.extralives):
             ExtraLife((10 + x * 15, self.height - 20))
+            
+    def destroyShip(self):
+
         
     def resetScreen(self):
         [asteroid.destroy() for asteroid in self.getSpritesbyClass(Asteroid)]
