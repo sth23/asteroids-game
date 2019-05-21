@@ -202,6 +202,7 @@ class AsteroidsGame(App):
             self.random = random.randint(0,3)
             print(self.random)
         self.count += 1
+        print(self.count)
         
         for ship in self.getSpritesbyClass(Ship):
             ship.step()
