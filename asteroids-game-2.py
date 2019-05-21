@@ -139,9 +139,7 @@ class AsteroidsGame(App):
         self.player1 = Ship((self.width / 2, self.height / 2), self.width, self.height)
         self.showExtraLives()
         
-        self.bithit = []
-        self.mediumhit = []
-        self.smallhit = []
+        self.hit = []
         
         self.count = 0
         self.randx = 0
@@ -207,7 +205,7 @@ class AsteroidsGame(App):
             # Wrap screen for big asteroids
             if asteroid.x > self.width + asteroid.radius:
                 asteroid.x = -asteroid.radius
-            elif asgteroid.x < -asteroid.radius:
+            elif asteroid.x < -asteroid.radius:
                 asteroid.x = self.width + asteroid.radius
             if asteroid.y > self.height + asteroid.radius:
                 asteroid.y = -asteroid.radius
@@ -222,34 +220,26 @@ class AsteroidsGame(App):
             elif bullet.y > self.height + 50 or bullet.y < -50:
                 bullet.destroy()
             else:
-                self.bighit = bullet.collidingWithSprites(BigAsteroid)
-                self.mediumhit = bullet.collidingWithSprites(MediumAsteroid)
-                self.smallhit = bullet.collidingWithSprites(SmallAsteroid)
-                if self.bighit:
-                    for big in self.bighit:
-                        MediumAsteroid((big.x + math.sin(big.rotation)*90/4, big.y + math.cos(big.rotation)*90/4))
-                        MediumAsteroid((big.x - math.sin(big.rotation)*90/4, big.y + math.cos(big.rotation)*90/4))
-                        MediumAsteroid((big.x + math.sin(big.rotation)*90/4, big.y - math.cos(big.rotation)*90/4))
-                        MediumAsteroid((big.x - math.sin(big.rotation)*90/4, big.y - math.cos(big.rotation)*90/4))
-                        self.score += 10
-                        print("Score: " + str(self.score))
-                        big.destroy()
-                    bullet.destroy()
-                elif self.mediumhit:
-                    for medium in self.mediumhit:
-                        SmallAsteroid((medium.x + math.sin(medium.rotation)*90/8, medium.y + math.cos(medium.rotation)*90/8))
-                        SmallAsteroid((medium.x - math.sin(medium.rotation)*90/8, medium.y + math.cos(medium.rotation)*90/8))
-                        SmallAsteroid((medium.x + math.sin(medium.rotation)*90/8, medium.y - math.cos(medium.rotation)*90/8))
-                        SmallAsteroid((medium.x - math.sin(medium.rotation)*90/8, medium.y - math.cos(medium.rotation)*90/8))
-                        self.score += 20
-                        print("Score: " + str(self.score))
-                        medium.destroy()
-                    bullet.destroy()
-                elif self.smallhit:
-                    for small in bullet.collidingWithSprites(SmallAsteroid):
-                        self.score += 30
-                        print("Score: " + str(self.score))
-                        small.destroy()
+                self.hit = bullet.collidingWithSprites(Asteroid)
+                if self.hit:
+                    for asteroid in self.hit:
+                        if asteroid.size == "big":
+                            MediumAsteroid((big.x + math.sin(big.rotation)*90/4, big.y + math.cos(big.rotation)*90/4))
+                            MediumAsteroid((big.x - math.sin(big.rotation)*90/4, big.y + math.cos(big.rotation)*90/4))
+                            MediumAsteroid((big.x + math.sin(big.rotation)*90/4, big.y - math.cos(big.rotation)*90/4))
+                            MediumAsteroid((big.x - math.sin(big.rotation)*90/4, big.y - math.cos(big.rotation)*90/4))
+                            self.score += 10
+                            asteroid.destroy()
+                        elif asteroid.zise == "medium":
+                            SmallAsteroid((medium.x + math.sin(medium.rotation)*90/8, medium.y + math.cos(medium.rotation)*90/8))
+                            SmallAsteroid((medium.x - math.sin(medium.rotation)*90/8, medium.y + math.cos(medium.rotation)*90/8))
+                            SmallAsteroid((medium.x + math.sin(medium.rotation)*90/8, medium.y - math.cos(medium.rotation)*90/8))
+                            SmallAsteroid((medium.x - math.sin(medium.rotation)*90/8, medium.y - math.cos(medium.rotation)*90/8))
+                            self.score += 20
+                            asteroid.destroy()
+                        elif asteroid.size == "small":
+                            self.score += 30
+                            asteroid.destroy()
                     bullet.destroy()
         
 myapp = AsteroidsGame()
