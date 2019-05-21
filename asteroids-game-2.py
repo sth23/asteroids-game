@@ -178,7 +178,6 @@ class AsteroidsGame(App):
         ShipPiece((self.player1.x + math.sin(self.player1.rotation) * self.player1.radius / 2, self.player1.y + math.cos(self.player1.rotation) * self.player1.radius / 2). self.player1.vx, self.player1.vy)
         ShipPiece((self.player1.x + math.sin(self.player1.rotation) * self.player1.radius / 2, self.player1.y + math.cos(self.player1.rotation) * self.player1.radius / 2). self.player1.vx, self.player1.vy)
         ShipPiece((self.player1.x + math.sin(self.player1.rotation) * self.player1.radius / 2, self.player1.y + math.cos(self.player1.rotation) * self.player1.radius / 2). self.player1.vx, self.player1.vy)
-        self.player1.destroy()   
    
     def resetScreen(self):
         [asteroid.destroy() for asteroid in self.getSpritesbyClass(Asteroid)]
@@ -265,6 +264,7 @@ class AsteroidsGame(App):
                             self.score += 30
                             asteroid.destroy()
                     bullet.destroy()
+                    print("Score: " + int(self.score))
         
 myapp = AsteroidsGame()
 myapp.run()
