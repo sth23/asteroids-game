@@ -32,8 +32,7 @@ class BigAsteroid(Sprite):
         self.xcoordinates = [30, 60, 90, 90, 60, 30, 0, 0]
         self.ycoordinates = [0, 0, 30, 60, 90, 90, 60, 30]
         self.range = 12
-        self.points = []
-        print(self.points)
+        self.points = [None] * 8
         if self.size == "medium":
             self.range = self.range / 2
             self.xcoordinates = [x / 2 + random.randint(-self.range, self.range) for x in self.xcoordinates]
