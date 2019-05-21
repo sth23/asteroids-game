@@ -214,7 +214,7 @@ class AsteroidsGame(App):
         
     def showExtraLives(self):
         for x in range(0,self.player1.extralives):
-            ExtraLife(10 + x * 15, self.height - 20)
+            ExtraLife((10 + x * 15, self.height - 20))
         
     def resetScreen(self):
         [big.destroy() for big in self.getSpritesbyClass(BigAsteroid)]
