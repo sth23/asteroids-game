@@ -15,15 +15,18 @@ class Asteroid(Sprite):
         self.range = 12
         self.radius = 50
         self.points = [None] * 8
+        self.speed = 1
         if size == "big":
             self.xcoordinates = [x + random.randint(-self.range, self.range) for x in self.xcoordinates]
             self.ycoordinates = [y + random.randint(-self.range, self.range) for y in self.ycoordinates]
         elif size == "medium":
+            self.speed = 2
             self.range = int(self.range / 2)
             self.radius / 2
             self.xcoordinates = [x / 2 + random.randint(-self.range, self.range) for x in self.xcoordinates]
             self.ycoordinates = [y / 2 + random.randint(-self.range, self.range) for y in self.ycoordinates]
         else:
+            self.speed = 3
             self.range = int(self.range / 4)
             self.radius / 4
             self.xcoordinates = [x / 4 + random.randint(-self.range, self.range) for x in self.xcoordinates]
@@ -36,7 +39,7 @@ class Asteroid(Sprite):
         
         super().__init__(self.poly, position, CircleAsset(self.radius))
         
-        self.speed = 1
+
         self.rotation = random.random() * 2 * math.pi
         self.vx = self.speed * math.sin(self.rotation)
         self.vy = self.speed * math.cos(self.rotation)
