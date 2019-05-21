@@ -260,8 +260,9 @@ class AsteroidsGame(App):
                     SmallAsteroid((medium.x - math.sin(medium.rotation)*90/8, medium.y - math.cos(medium.rotation)*90/8))
                     medium.destroy()
                     bullet.destroy()
-        
-
+                for small in bullet.collidingWithSprites(SmallAsteroid):
+                    small.destroy()
+                    bullet.destroy()
         
 myapp = AsteroidsGame()
 myapp.run()
