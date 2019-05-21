@@ -15,8 +15,8 @@ class Asteroid(Sprite):
         self.range = 12
         self.points = []
         if size == "big":
-            self.xcoordinates = [x / 2 + random.randint(-self.range, self.range) for x in self.xcoordinates]
-            self.ycoordinates = [y / 2 + random.randint(-self.range, self.range) for y in self.ycoordinates]
+            self.xcoordinates = [x + random.randint(-self.range, self.range) for x in self.xcoordinates]
+            self.ycoordinates = [y + random.randint(-self.range, self.range) for y in self.ycoordinates]
         elif size == "medium":
             self.range = self.range / 2
             self.xcoordinates = [x / 2 + random.randint(-self.range, self.range) for x in self.xcoordinates]
