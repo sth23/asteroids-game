@@ -204,6 +204,7 @@ class AsteroidsGame(App):
         [medium.destroy() for medium in self.getSpritesbyClass(MediumAsteroid)]
         [small.destroy() for small in self.getSpritesbyClass(SmallAsteroid)]
         Ship((self.width / 2, self.height / 2), self.width, self.height)
+        self.count = 0
         
     def step(self):
         # Randomly create big asteroids that drift onto screen
