@@ -29,6 +29,7 @@ class Asteroid(Sprite):
 class BigAsteroid(Sprite):
     def __init__(self, position):
         self.size = "big"
+        print(self.size)
         self.xcoordinates = [30, 60, 90, 90, 60, 30, 0, 0]
         self.ycoordinates = [0, 0, 30, 60, 90, 90, 60, 30]
         self.range = 12
