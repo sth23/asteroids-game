@@ -30,8 +30,15 @@ class BigAsteroid(Sprite):
         
         super().__init__(self.poly, (100,100))
         self.speed = 2
-        self.vx = self.speed * math.sin(random.random() * 2 * math.pi)
-        self.vy = self.speed * math.cos(random.random() * 2 * math.pi)
+        self.rotation = 0
+        self.vx = self.speed * math.sin(self.rotation)
+        self.vy = self.speed * math.cos(self.rotation)
+        self.vr = 0.1 * math.random.random()
+        
+    def step(self):
+        self.x += self.vx
+        self.y += self.vy
+        self.rotation += self.vr
     
 #class MediumAsteroid(Sprite):
     
@@ -117,6 +124,9 @@ class AsteroidsGame(App):
         
     def step(self):
         self.player1.step()
+        
+        for big in self.getSpritesbyClass(BigAsteroid):
+            big.step()
         
         for bullet in self.getSpritesbyClass(Bullet):
             bullet.step()
