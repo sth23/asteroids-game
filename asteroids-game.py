@@ -198,9 +198,10 @@ class AsteroidsGame(App):
         
     def step(self):
         # Randomly create big asteroids that drift onto screen
-        if self.count % 10000 == 0:
+        if self.count % 1000 == 0:
             self.random = random.randint(0,3)
             print(self.random)
+        self.count += 1
         
         for ship in self.getSpritesbyClass(Ship):
             ship.step()
