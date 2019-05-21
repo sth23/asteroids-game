@@ -125,6 +125,12 @@ class Bullet(Sprite):
     def step(self):
         self.x += self.vx
         self.y += self.vy
+        
+class ExtraLife(Sprite):
+    ship = PolygonAsset([(0,10), (5,0), (10,10), (5,5)], noline, black)
+    
+    def __init__(self, position):
+        
 
 class Ship(Sprite):
     ship = PolygonAsset([(0,30), (15,0), (30,30), (15,15)], noline, black)
@@ -144,6 +150,7 @@ class Ship(Sprite):
         self.deltavy = 0
         self.speed = 0
         self.fxcenter = self.fycenter = 0.5
+        self.extralives = 3
         
         AsteroidsGame.listenKeyEvent("keydown", "space", self.shoot)
 
@@ -154,23 +161,29 @@ class Ship(Sprite):
         AsteroidsGame.listenKeyEvent("keydown", "up arrow", self.thrustOn)
 
     def shoot(self, event):
-        Bullet((self.x - 15 * math.sin(self.rotation), self.y - 15 * math.cos(self.rotation)), self.rotation)
+        if extralives >= 0:
+            Bullet((self.x - 15 * math.sin(self.rotation), self.y - 15 * math.cos(self.rotation)), self.rotation)
 
     def rotateRightOn(self, event):
-        self.vr = -self.rotatespeed
+        if self.extralives >= 0:
+            self.vr = -self.rotatespeed
         
     def rotateRightOff(self, event):
-        self.vr = 0
+        if self.extralives >= 0:
+            self.vr = 0
         
     def rotateLeftOn(self, event):
-        self.vr = self.rotatespeed
+        if self.extralives >= 0:
+            self.vr = self.rotatespeed
         
     def rotateLeftOff(self, event):
-        self.vr = 0
+        if self.extralives >= 0:
+            self.vr = 0
         
     def thrustOn(self, event):
-        self.deltavx = -self.thrust * math.sin(self.rotation)
-        self.deltavy = -self.thrust * math.cos(self.rotation)
+        if self.extralives >= 0:
+            self.deltavx = -self.thrust * math.sin(self.rotation)
+            self.deltavy = -self.thrust * math.cos(self.rotation)
         
         # Check speed limit
         if ((self.vx + self.deltavx)**2 + (self.vy + self.deltavy)**2)**0.5 < self.speedlimit:
@@ -185,7 +198,8 @@ class Ship(Sprite):
 class AsteroidsGame(App):
     def __init__(self):
         super().__init__()
-        Ship((self.width / 2, self.height / 2), self.width, self.height)
+        self.player1 = Ship((self.width / 2, self.height / 2), self.width, self.height)
+        self.showExtraLives
         
         self.bithit = []
         self.mediumhit = []
@@ -196,14 +210,20 @@ class AsteroidsGame(App):
         self.randy = 0
         self.random = 0
         self.score = 0
-        self.extralives = 3
         print("Score: " + str(self.score))
+        
+    def showExtraLives(self):
+        for x in range(0,self.player1.extralives):
+            ExtraLife(10 + x * 15, self.height - 20)
         
     def resetScreen(self):
         [big.destroy() for big in self.getSpritesbyClass(BigAsteroid)]
         [medium.destroy() for medium in self.getSpritesbyClass(MediumAsteroid)]
         [small.destroy() for small in self.getSpritesbyClass(SmallAsteroid)]
-        Ship((self.width / 2, self.height / 2), self.width, self.height)
+        self.player1.x = self.width / 2
+        self.player1.y = self.height / 2
+        self.player1.vx = 0
+        self.player1.vy = 0
         self.count = 0
         
     def step(self):
