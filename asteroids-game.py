@@ -41,7 +41,40 @@ class BigAsteroid(Sprite):
         self.y += self.vy
         self.rotation += self.vr
     
-#class MediumAsteroid(Sprite):
+class MediumAsteroid(Sprite):
+    def __init__(self, position):
+        self.x1 = 15 + random.randint(-5,5)
+        self.y1 = 0 + random.randint(-5,5)
+        self.x2 = 30 + random.randint(-5,5)
+        self.y2 = 0 + random.randint(-5,5)
+        self.x3 = 45 + random.randint(-5,5)
+        self.y3 = 15 + random.randint(-5,5)
+        self.x4 = 45 + random.randint(-5,5)
+        self.y4 = 30 + random.randint(-5,5)
+        self.x5 = 30 + random.randint(-5,5)
+        self.y5 = 45 + random.randint(-5,5)
+        self.x6 = 15 + random.randint(-5,5)
+        self.y6 = 45 + random.randint(-5,5)
+        self.x7 = 0 + random.randint(-5,5)
+        self.y7 = 30 + random.randint(-5,5)
+        self.x8 = 0 + random.randint(-5,5)
+        self.y8 = 15 + random.randint(-5,5)
+        self.points = [(self.x1,self.y1), (self.x2,self.y2), (self.x3,self.y3), (self.x4,self.y4), (self.x5,self.y5), (self.x6,self.y6), (self.x7,self.y7), (self.x8,self.y8)]
+        self.poly = PolygonAsset(self.points, noline, black)
+        
+        super().__init__(self.poly, position)
+        
+        self.speed = 2
+        self.rotation = 0
+        self.vx = self.speed * math.sin(self.rotation)
+        self.vy = self.speed * math.cos(self.rotation)
+        self.vr = 0.03 * random.random()
+        self.fxcenter = self.fycenter = 0.5
+        
+    def step(self):
+        self.x += self.vx
+        self.y += self.vy
+        self.rotation += self.vr
     
 #class SmallAsteroid(Sprite):
 
@@ -138,6 +171,10 @@ class AsteroidsGame(App):
                 bullet.destroy()
             else:
                 for big in bullet.collidingWithSprites(BigAsteroid):
+                    MediumAsteroid((big.x + math.sin(big.rotation)*90/4, big.y + math.cos(big.rotation)*90/4))
+                    MediumAsteroid((big.x - math.sin(big.rotation)*90/4, big.y + math.cos(big.rotation)*90/4))
+                    MediumAsteroid((big.x + math.sin(big.rotation)*90/4, big.y - math.cos(big.rotation)*90/4))
+                    MediumAsteroid((big.x - math.sin(big.rotation)*90/4, big.y - math.cos(big.rotation)*90/4))
                     big.destroy()
                     bullet.destroy()
         
