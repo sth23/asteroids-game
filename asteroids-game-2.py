@@ -12,29 +12,6 @@ class Asteroid(Sprite):
         self.size = size
         self.xcoordinates = [30, 60, 90, 90, 60, 30, 0, 0]
         self.ycoordinates = [0, 0, 30, 60, 90, 90, 60, 30]
-        self.randomrange = 12
-        self.radius = 45
-        self.points = [None] * 8
-        if size == "big":
-            self.xcoordinates = [x + random.randint(-self.range, self.range) for x in self.xcoordinates]
-            self.ycoordinates = [y + random.randint(-self.range, self.range) for y in self.ycoordinates]
-        elif size == "medium":
-            self.range = self.range / 2
-            self.xcoordinates = [x / 2 + random.randint(-self.range, self.range) for x in self.xcoordinates]
-            self.ycoordinates = [y / 2 + random.randint(-self.range, self.range) for y in self.ycoordinates]
-        else:
-            self.range = self.range / 4
-            self.xcoordinates = [x / 4 + random.randint(-self.range, self.range) for x in self.xcoordinates]
-            self.ycoordinates = [y / 4 + random.randint(-self.range, self.range) for y in self.ycoordinates]
-            
-        for z in range(0,8):
-            self.points[z] = (self.xcoordinates[z], self.ycoordinates[z])
-
-class BigAsteroid(Sprite):
-    def __init__(self, position, size):
-        self.size = size
-        self.xcoordinates = [30, 60, 90, 90, 60, 30, 0, 0]
-        self.ycoordinates = [0, 0, 30, 60, 90, 90, 60, 30]
         self.range = 12
         self.radius = 50
         self.points = [None] * 8
@@ -64,76 +41,6 @@ class BigAsteroid(Sprite):
         self.vx = self.speed * math.sin(self.rotation)
         self.vy = self.speed * math.cos(self.rotation)
         self.vr = 0.02 * random.random()
-        self.fxcenter = self.fycenter = 0.5
-        
-    def step(self):
-        self.x += self.vx
-        self.y += self.vy
-        self.rotation += self.vr
-    
-class MediumAsteroid(Sprite):
-    def __init__(self, position):
-        self.x1 = 15 + random.randint(-5,5)
-        self.y1 = 0 + random.randint(-5,5)
-        self.x2 = 30 + random.randint(-5,5)
-        self.y2 = 0 + random.randint(-5,5)
-        self.x3 = 45 + random.randint(-5,5)
-        self.y3 = 15 + random.randint(-5,5)
-        self.x4 = 45 + random.randint(-5,5)
-        self.y4 = 30 + random.randint(-5,5)
-        self.x5 = 30 + random.randint(-5,5)
-        self.y5 = 45 + random.randint(-5,5)
-        self.x6 = 15 + random.randint(-5,5)
-        self.y6 = 45 + random.randint(-5,5)
-        self.x7 = 0 + random.randint(-5,5)
-        self.y7 = 30 + random.randint(-5,5)
-        self.x8 = 0 + random.randint(-5,5)
-        self.y8 = 15 + random.randint(-5,5)
-        self.points = [(self.x1,self.y1), (self.x2,self.y2), (self.x3,self.y3), (self.x4,self.y4), (self.x5,self.y5), (self.x6,self.y6), (self.x7,self.y7), (self.x8,self.y8)]
-        self.poly = PolygonAsset(self.points, noline, black)
-        
-        super().__init__(self.poly, position, CircleAsset(22.5))
-        
-        self.speed = 2
-        self.rotation = random.random() * 2 * math.pi
-        self.vx = self.speed * math.sin(self.rotation)
-        self.vy = self.speed * math.cos(self.rotation)
-        self.vr = 0.03 * random.random()
-        self.fxcenter = self.fycenter = 0.5
-        
-    def step(self):
-        self.x += self.vx
-        self.y += self.vy
-        self.rotation += self.vr
-    
-class SmallAsteroid(Sprite):
-    def __init__(self, position):
-        self.x1 = 7.5 + random.randint(-3,3)
-        self.y1 = 0 + random.randint(-3,3)
-        self.x2 = 15 + random.randint(-3,3)
-        self.y2 = 0 + random.randint(-3,3)
-        self.x3 = 22.5 + random.randint(-3,3)
-        self.y3 = 7.5 + random.randint(-3,3)
-        self.x4 = 22.5 + random.randint(-3,3)
-        self.y4 = 15 + random.randint(-3,3)
-        self.x5 = 15 + random.randint(-3,3)
-        self.y5 = 22.5 + random.randint(-3,3)
-        self.x6 = 7.5 + random.randint(-3,3)
-        self.y6 = 22.5 + random.randint(-3,3)
-        self.x7 = 0 + random.randint(-3,3)
-        self.y7 = 15 + random.randint(-3,3)
-        self.x8 = 0 + random.randint(-3,3)
-        self.y8 = 7.5 + random.randint(-3,3)
-        self.points = [(self.x1,self.y1), (self.x2,self.y2), (self.x3,self.y3), (self.x4,self.y4), (self.x5,self.y5), (self.x6,self.y6), (self.x7,self.y7), (self.x8,self.y8)]
-        self.poly = PolygonAsset(self.points, noline, black)
-        
-        super().__init__(self.poly, position, CircleAsset(11.25))
-        
-        self.speed = 3
-        self.rotation = random.random() * 2 * math.pi
-        self.vx = self.speed * math.sin(self.rotation)
-        self.vy = self.speed * math.cos(self.rotation)
-        self.vr = 0.04 * random.random()
         self.fxcenter = self.fycenter = 0.5
         
     def step(self):
@@ -250,9 +157,8 @@ class AsteroidsGame(App):
             ExtraLife((10 + x * 15, self.height - 20))
         
     def resetScreen(self):
-        [big.destroy() for big in self.getSpritesbyClass(BigAsteroid)]
-        [medium.destroy() for medium in self.getSpritesbyClass(MediumAsteroid)]
-        [small.destroy() for small in self.getSpritesbyClass(SmallAsteroid)]
+        [asteroid.destroy() for asteroid in self.getSpritesbyClass(Asteroid)]
+
         self.player1.x = self.width / 2
         self.player1.y = self.height / 2
         self.player1.vx = 0
@@ -269,13 +175,13 @@ class AsteroidsGame(App):
         if self.count % 1000 == 0:
             self.random = random.randint(0,3)
             if self.random == 0:
-                BigAsteroid((random.randint(0, self.width), -45), "big")
+                Asteroid((random.randint(0, self.width), -45), "big")
             elif self.random == 1:
-                BigAsteroid((self.width + 45, random.randint(0, self.height)), "big")
+                Asteroid((self.width + 45, random.randint(0, self.height)), "big")
             elif self.random == 2:
-                BigAsteroid((random.randint(0, self.width), self.height + 45), "big")
+                Asteroid((random.randint(0, self.width), self.height + 45), "big")
             else:
-                BigAsteroid((-45, random.randint(0, self.height)), "big")
+                Asteroid((-45, random.randint(0, self.height)), "big")
         self.count += 1
         
         for ship in self.getSpritesbyClass(Ship):
@@ -290,48 +196,23 @@ class AsteroidsGame(App):
             elif ship.y < -20:
                 ship.y = self.height + 20
                 
-            if ship.collidingWithSprites(BigAsteroid):
-                self.resetScreen()
-            elif ship.collidingWithSprites(MediumAsteroid):
-                self.resetScreen()
-            elif ship.collidingWithSprites(SmallAsteroid):
-                self.resetScreen()
+            if ship.collidingWithSprites(Asteroid):
+                if self.player1.extralives >= 0:
+                    self.resetScreen()
+                else:
+                    self.player1.destroy()
         
-        for big in self.getSpritesbyClass(BigAsteroid):
-            big.step()
+        for asteroid in self.getSpritesbyClass(Asteroid):
+            asteroid.step()
             # Wrap screen for big asteroids
-            if big.x > self.width + 90:
-                big.x = -90
-            elif big.x < -90:
-                big.x = self.width + 90
-            if big.y > self.height + 90:
-                big.y = -90
-            elif big.y < -90:
-                big.y = self.height + 90
-            
-        for medium in self.getSpritesbyClass(MediumAsteroid):
-            medium.step()
-            # Wrap screen for medium asteroids
-            if medium.x > self.width + 45:
-                medium.x = -45
-            elif medium.x < -45:
-                medium.x = self.width + 45
-            if medium.y > self.height + 45:
-                medium.y = -45
-            elif medium.y < -45:
-                medium.y = self.height + 45
-                
-        for small in self.getSpritesbyClass(SmallAsteroid):
-            small.step()
-            # Wrap screen for small asteroids
-            if small.x > self.width + 22.5:
-                small.x = -22.5
-            elif small.x < -22.5:
-                small.x = self.width + 22.5
-            if small.y > self.height + 22.5:
-                small.y = -22.5
-            elif small.y < -22.5:
-                small.y = self.height + 22.5
+            if asteroid.x > self.width + asteroid.radius:
+                asteroid.x = -asteroid.radius
+            elif asgteroid.x < -asteroid.radius:
+                asteroid.x = self.width + asteroid.radius
+            if asteroid.y > self.height + asteroid.radius:
+                asteroid.y = -asteroid.radius
+            elif asteroid.y < -asteroid.radius:
+                asteroid.y = self.height + asteroid.radius
             
         for bullet in self.getSpritesbyClass(Bullet):
             bullet.step()
