@@ -161,6 +161,9 @@ class AsteroidsGame(App):
         
         for big in self.getSpritesbyClass(BigAsteroid):
             big.step()
+            
+        for medium in self.getSpritesbyClass(MediumAsteroid):
+            medium.step()
         
         for bullet in self.getSpritesbyClass(Bullet):
             bullet.step()
