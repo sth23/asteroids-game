@@ -76,7 +76,8 @@ class Ship(Sprite):
     ship = PolygonAsset([(0,30), (15,0), (30,30), (15,15)], noline, black)
     
     def __init__(self, position, width, height):
-        super().__init__(Ship.ship, position, CircleAsset(15))
+        self.radius = 15
+        super().__init__(Ship.ship, position, CircleAsset(self.radius))
         self.gamewidth = width
         self.gameheight = height
         self.speedlimit = 7.5
@@ -136,7 +137,7 @@ class Ship(Sprite):
             self.y += self.vy
             self.rotation += self.vr
             
-class shipPiece(Sprite):
+class ShipPiece(Sprite):
     tri = PolygonAsset([(7.5,0), (15,0), (0,15)], noline, black)
     
     def __init__(self, position, vx, vy):
@@ -173,8 +174,11 @@ class AsteroidsGame(App):
             ExtraLife((10 + x * 15, self.height - 20))
             
     def destroyShip(self):
-
-        
+        ShipPiece((self.player1.x + math.sin(self.player1.rotation) * self.player1.radius / 2, self.player1.y + math.cos(self.player1.rotation) * self.player1.radius / 2). self.player1.vx, self.player1.vy)
+        ShipPiece((self.player1.x + math.sin(self.player1.rotation) * self.player1.radius / 2, self.player1.y + math.cos(self.player1.rotation) * self.player1.radius / 2). self.player1.vx, self.player1.vy)
+        ShipPiece((self.player1.x + math.sin(self.player1.rotation) * self.player1.radius / 2, self.player1.y + math.cos(self.player1.rotation) * self.player1.radius / 2). self.player1.vx, self.player1.vy)
+        ShipPiece((self.player1.x + math.sin(self.player1.rotation) * self.player1.radius / 2, self.player1.y + math.cos(self.player1.rotation) * self.player1.radius / 2). self.player1.vx, self.player1.vy)
+   
     def resetScreen(self):
         [asteroid.destroy() for asteroid in self.getSpritesbyClass(Asteroid)]
 
@@ -219,6 +223,7 @@ class AsteroidsGame(App):
                 if self.player1.extralives >= 0:
                     self.resetScreen()
                 else:
+                    self.destroyShip()
                     self.player1.destroy()
         
         for asteroid in self.getSpritesbyClass(Asteroid):
