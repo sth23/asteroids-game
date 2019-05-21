@@ -7,25 +7,47 @@ black = Color(0x000000, 1.0)
 noline = LineStyle(0, black)
 blackline = LineStyle(1, black)
 
+class Asteroid(Sprite):
+    def __init__(self, position, size):
+        self.size = size
+        self.xcoordinates = [30, 60, 90, 90, 60, 30, 0, 0]
+        self.ycoordinates = [0, 0, 30, 60, 90, 90, 60, 30]
+        self.range = 12
+        self.points = []
+        if size == "medium":
+            self.range = self.range / 2
+            self.xcoordinates = [x / 2 + random.randint(-self.range, self.range) for x in self.xcoordinates]
+            self.ycoordinates = [y / 2 + random.randint(-self.range, self.range) for y in self.ycoordinates]
+        elif size == "small":
+            self.range = self.range / 4
+            self.xcoordinates = [x / 4 + random.randint(-self.range, self.range) for x in self.xcoordinates]
+            self.ycoordinates = [y / 4 + random.randint(-self.range, self.range) for y in self.ycoordinates]
+            
+        for z in range(0,8):
+            self.points[z] = (self.xcoordinates[z], self.ycoordinates[z])
+
 class BigAsteroid(Sprite):
     def __init__(self, position):
-        self.x1 = 30 + random.randint(-10,10)
-        self.y1 = 0 + random.randint(-10,10)
-        self.x2 = 60 + random.randint(-10,10)
-        self.y2 = 0 + random.randint(-10,10)
-        self.x3 = 90 + random.randint(-10,10)
-        self.y3 = 30 + random.randint(-10,10)
-        self.x4 = 90 + random.randint(-10,10)
-        self.y4 = 60 + random.randint(-10,10)
-        self.x5 = 60 + random.randint(-10,10)
-        self.y5 = 90 + random.randint(-10,10)
-        self.x6 = 30 + random.randint(-10,10)
-        self.y6 = 90 + random.randint(-10,10)
-        self.x7 = 0 + random.randint(-10,10)
-        self.y7 = 60 + random.randint(-10,10)
-        self.x8 = 0 + random.randint(-10,10)
-        self.y8 = 30 + random.randint(-10,10)
-        self.points = [(self.x1,self.y1), (self.x2,self.y2), (self.x3,self.y3), (self.x4,self.y4), (self.x5,self.y5), (self.x6,self.y6), (self.x7,self.y7), (self.x8,self.y8)]
+        #self.size = size
+        self.xcoordinates = [30, 60, 90, 90, 60, 30, 0, 0]
+        self.ycoordinates = [0, 0, 30, 60, 90, 90, 60, 30]
+        self.range = 12
+        self.points = []
+        if size == "medium":
+            self.range = self.range / 2
+            self.xcoordinates = [x / 2 + random.randint(-self.range, self.range) for x in self.xcoordinates]
+            self.ycoordinates = [y / 2 + random.randint(-self.range, self.range) for y in self.ycoordinates]
+        elif size == "small":
+            self.range = self.range / 4
+            self.xcoordinates = [x / 4 + random.randint(-self.range, self.range) for x in self.xcoordinates]
+            self.ycoordinates = [y / 4 + random.randint(-self.range, self.range) for y in self.ycoordinates]
+            
+        for z in range(0,8):
+            self.points[z] = (self.xcoordinates[z], self.ycoordinates[z])
+
+
+
+
         self.poly = PolygonAsset(self.points, noline, black)
         
         super().__init__(self.poly, position, CircleAsset(45))
