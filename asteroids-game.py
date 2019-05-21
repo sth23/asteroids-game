@@ -130,7 +130,7 @@ class ExtraLife(Sprite):
     ship = PolygonAsset([(0,10), (5,0), (10,10), (5,5)], noline, black)
     
     def __init__(self, position):
-        
+        super().__init__(ExtraLife.ship, position)
 
 class Ship(Sprite):
     ship = PolygonAsset([(0,30), (15,0), (30,30), (15,15)], noline, black)
