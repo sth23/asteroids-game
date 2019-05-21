@@ -76,7 +76,40 @@ class MediumAsteroid(Sprite):
         self.y += self.vy
         self.rotation += self.vr
     
-#class SmallAsteroid(Sprite):
+class SmallAsteroid(Sprite):
+    def __init__(self, position):
+        self.x1 = 7.5 + random.randint(-2.5,2.5)
+        self.y1 = 0 + random.randint(-2.5,2.5)
+        self.x2 = 15 + random.randint(-2.5,2.5)
+        self.y2 = 0 + random.randint(-2.5,2.5)
+        self.x3 = 22.5 + random.randint(-2.5,2.5)
+        self.y3 = 7.5 + random.randint(-2.5,2.5)
+        self.x4 = 22.5 + random.randint(-2.5,2.5)
+        self.y4 = 15 + random.randint(-2.5,2.5)
+        self.x5 = 15 + random.randint(-2.5,2.5)
+        self.y5 = 22.5 + random.randint(-2.5,2.5)
+        self.x6 = 7.5 + random.randint(-2.5,2.5)
+        self.y6 = 22.5 + random.randint(-2.5,2.5)
+        self.x7 = 0 + random.randint(-2.5,2.5)
+        self.y7 = 15 + random.randint(-2.5,2.5)
+        self.x8 = 0 + random.randint(-2.5,2.5)
+        self.y8 = 7.5 + random.randint(-2.5,2.5)
+        self.points = [(self.x1,self.y1), (self.x2,self.y2), (self.x3,self.y3), (self.x4,self.y4), (self.x5,self.y5), (self.x6,self.y6), (self.x7,self.y7), (self.x8,self.y8)]
+        self.poly = PolygonAsset(self.points, noline, black)
+        
+        super().__init__(self.poly, position)
+        
+        self.speed = 3
+        self.rotation = random.random() * 2 * math.pi
+        self.vx = self.speed * math.sin(self.rotation)
+        self.vy = self.speed * math.cos(self.rotation)
+        self.vr = 0.04 * random.random()
+        self.fxcenter = self.fycenter = 0.5
+        
+    def step(self):
+        self.x += self.vx
+        self.y += self.vy
+        self.rotation += self.vr
 
 class Bullet(Sprite):
     circ = CircleAsset(2, noline, black)
@@ -193,7 +226,6 @@ class AsteroidsGame(App):
             elif medium.y < -45:
                 medium.y = self.height + 45
             
-        
         for bullet in self.getSpritesbyClass(Bullet):
             bullet.step()
             
