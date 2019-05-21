@@ -161,7 +161,7 @@ class Ship(Sprite):
         AsteroidsGame.listenKeyEvent("keydown", "up arrow", self.thrustOn)
 
     def shoot(self, event):
-        if extralives >= 0:
+        if self.extralives >= 0:
             Bullet((self.x - 15 * math.sin(self.rotation), self.y - 15 * math.cos(self.rotation)), self.rotation)
 
     def rotateRightOn(self, event):
