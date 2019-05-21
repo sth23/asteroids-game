@@ -200,7 +200,14 @@ class AsteroidsGame(App):
         # Randomly create big asteroids that drift onto screen
         if self.count % 200 == 0:
             self.random = random.randint(0,3)
-            print(self.random)
+            if self.random == 0:
+                BigAsteroid((random.randint(0, self.width), -85))
+            elif self.random == 1:
+                BigAsteroid((self.width + 85, random.randint(0, self.height)))
+            elif self.random == 2:
+                BigAsteroid((random.randint(0, self.width), self.height + 85))
+            else:
+                BigAsteroid((-85, random.randint(0, self.height)))
         self.count += 1
         
         for ship in self.getSpritesbyClass(Ship):
