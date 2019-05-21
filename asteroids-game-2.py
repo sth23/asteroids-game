@@ -27,29 +27,30 @@ class Asteroid(Sprite):
             self.points[z] = (self.xcoordinates[z], self.ycoordinates[z])
 
 class BigAsteroid(Sprite):
-    def __init__(self, position):
-        self.size = "big"
+    def __init__(self, position, size):
+        self.size = size
         self.xcoordinates = [30, 60, 90, 90, 60, 30, 0, 0]
         self.ycoordinates = [0, 0, 30, 60, 90, 90, 60, 30]
         self.range = 12
+        self.radius = 45
         self.points = [None] * 8
         if self.size == "medium":
             self.range = self.range / 2
+            self.radius = self.radius / 2
             self.xcoordinates = [x / 2 + random.randint(-self.range, self.range) for x in self.xcoordinates]
             self.ycoordinates = [y / 2 + random.randint(-self.range, self.range) for y in self.ycoordinates]
         elif self.size == "small":
             self.range = self.range / 4
+            self.radius = self.radius / 4
             self.xcoordinates = [x / 4 + random.randint(-self.range, self.range) for x in self.xcoordinates]
             self.ycoordinates = [y / 4 + random.randint(-self.range, self.range) for y in self.ycoordinates]
             
         for z in range(0,8):
             self.points[z] = (self.xcoordinates[z], self.ycoordinates[z])
-            
-        print(self.points)
 
         self.poly = PolygonAsset(self.points, noline, black)
         
-        super().__init__(self.poly, position, CircleAsset(45))
+        super().__init__(self.poly, position, CircleAsset(self.radius))
         self.speed = 1
         self.rotation = random.random() * 2 * math.pi
         self.vx = self.speed * math.sin(self.rotation)
