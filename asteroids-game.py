@@ -65,7 +65,7 @@ class MediumAsteroid(Sprite):
         super().__init__(self.poly, position)
         
         self.speed = 2
-        self.rotation = 0
+        self.rotation = random.random() * 2 * math.pi
         self.vx = self.speed * math.sin(self.rotation)
         self.vy = self.speed * math.cos(self.rotation)
         self.vr = 0.03 * random.random()
