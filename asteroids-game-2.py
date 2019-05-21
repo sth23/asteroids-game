@@ -14,6 +14,7 @@ class Asteroid(Sprite):
         self.ycoordinates = [0, 0, 30, 60, 90, 90, 60, 30]
         self.range = 12
         self.points = []
+        print(self.size)
         if size == "big":
             print(self.size)
             self.xcoordinates = [x + random.randint(-self.range, self.range) for x in self.xcoordinates]
