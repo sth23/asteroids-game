@@ -28,7 +28,7 @@ class BigAsteroid(Sprite):
         self.points = [(self.x1,self.y1), (self.x2,self.y2), (self.x3,self.y3), (self.x4,self.y4), (self.x5,self.y5), (self.x6,self.y6), (self.x7,self.y7), (self.x8,self.y8)]
         self.poly = PolygonAsset(self.points, noline, black)
         
-        super().__init__(self.poly, position)
+        super().__init__(self.poly, position, CircleAsset(45))
         self.speed = 1
         self.rotation = random.random() * 2 * math.pi
         self.vx = self.speed * math.sin(self.rotation)
@@ -62,7 +62,7 @@ class MediumAsteroid(Sprite):
         self.points = [(self.x1,self.y1), (self.x2,self.y2), (self.x3,self.y3), (self.x4,self.y4), (self.x5,self.y5), (self.x6,self.y6), (self.x7,self.y7), (self.x8,self.y8)]
         self.poly = PolygonAsset(self.points, noline, black)
         
-        super().__init__(self.poly, position)
+        super().__init__(self.poly, position, CircleAsset(22.5))
         
         self.speed = 2
         self.rotation = random.random() * 2 * math.pi
@@ -97,7 +97,7 @@ class SmallAsteroid(Sprite):
         self.points = [(self.x1,self.y1), (self.x2,self.y2), (self.x3,self.y3), (self.x4,self.y4), (self.x5,self.y5), (self.x6,self.y6), (self.x7,self.y7), (self.x8,self.y8)]
         self.poly = PolygonAsset(self.points, noline, black)
         
-        super().__init__(self.poly, position)
+        super().__init__(self.poly, position, CircleAsset(11.25))
         
         self.speed = 3
         self.rotation = random.random() * 2 * math.pi
@@ -130,7 +130,7 @@ class Ship(Sprite):
     ship = PolygonAsset([(0,30), (15,0), (30,30), (15,15)], noline, black)
     
     def __init__(self, position, width, height):
-        super().__init__(Ship.ship, position)
+        super().__init__(Ship.ship, position, CircleAsset(15))
         self.gamewidth = width
         self.gameheight = height
         self.speedlimit = 7.5
