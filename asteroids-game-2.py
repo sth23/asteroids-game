@@ -164,7 +164,7 @@ class Ship(Sprite):
         self.speedlimit = 7.5
         self.rotatespeed = 0.15
         self.maxspin = 1
-        self.thrust = 0.1
+        self.thrust = 0.25
         self.vx = 0
         self.vy = 0
         self.vr = 0
