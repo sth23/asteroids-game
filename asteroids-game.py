@@ -199,7 +199,7 @@ class AsteroidsGame(App):
     def __init__(self):
         super().__init__()
         self.player1 = Ship((self.width / 2, self.height / 2), self.width, self.height)
-        self.showExtraLives
+        self.showExtraLives()
         
         self.bithit = []
         self.mediumhit = []
