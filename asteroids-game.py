@@ -8,7 +8,7 @@ noline = LineStyle(0, black)
 blackline = LineStyle(1, black)
 
 class BigAsteroid(Sprite):
-    def __init__(self, width, height):
+    def __init__(self, position):
         self.x1 = 30 + random.randint(-10,10)
         self.y1 = 0 + random.randint(-10,10)
         self.x2 = 60 + random.randint(-10,10)
@@ -28,7 +28,7 @@ class BigAsteroid(Sprite):
         self.points = [(self.x1,self.y1), (self.x2,self.y2), (self.x3,self.y3), (self.x4,self.y4), (self.x5,self.y5), (self.x6,self.y6), (self.x7,self.y7), (self.x8,self.y8)]
         self.poly = PolygonAsset(self.points, noline, black)
         
-        super().__init__(self.poly, (100,100))
+        super().__init__(self.poly, position)
         self.speed = 1
         self.rotation = random.random() * 2 * math.pi
         self.vx = self.speed * math.sin(self.rotation)
