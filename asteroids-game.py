@@ -202,7 +202,7 @@ class AsteroidsGame(App):
     def resetScreen(self):
         [big.destroy() for big in self.getSpritesbyClass(BigAsteroid)]
         [medium.destroy() for medium in self.getSpritesbyClass(MediumAsteroid)]
-        [small.destroy() for small in self.getSpritesbyClass[SmallAsteroid)]
+        [small.destroy() for small in self.getSpritesbyClass(SmallAsteroid)]
         Ship((self.width / 2, self.height / 2), self.width, self.height)
         
     def step(self):
