@@ -221,6 +221,13 @@ class AsteroidsGame(App):
                 ship.y = -20
             elif ship.y < -20:
                 ship.y = self.height + 20
+                
+            if ship.collindingWithSprites(BigAsteroid):
+                ship.destroy()
+            elif ship.collidingWithSprites(MediumAsteroid):
+                ship.destroy()
+            elif ship.collidingWithSprites(SmallAsteroid):
+                ship.destroy()
         
         for big in self.getSpritesbyClass(BigAsteroid):
             big.step()
