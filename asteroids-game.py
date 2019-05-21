@@ -231,7 +231,7 @@ class AsteroidsGame(App):
         self.player1.extralives -= 1
         self.showExtraLives()
         self.count = 0
-        if self.extralives < 0:
+        if self.player1.extralives < 0:
             print("Game Over")
         
     def step(self):
