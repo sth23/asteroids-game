@@ -20,6 +20,7 @@ class Asteroid(Sprite):
             self.ycoordinates = [y + random.randint(-self.range, self.range) for y in self.ycoordinates]
         elif size == "medium":
             self.range = self.range / 2
+            print(self.range)
             self.radius / 2
             self.xcoordinates = [x / 2 + random.randint(-self.range, self.range) for x in self.xcoordinates]
             self.ycoordinates = [y / 2 + random.randint(-self.range, self.range) for y in self.ycoordinates]
@@ -224,8 +225,6 @@ class AsteroidsGame(App):
                 if self.hit:
                     for asteroid in self.hit:
                         if asteroid.size == "big":
-                            print(int(asteroid.x))
-                            print(int(asteroid.y))
                             Asteroid((int(asteroid.x), int(asteroid.y)), "medium")
                             
                             """
