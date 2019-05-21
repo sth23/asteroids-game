@@ -81,7 +81,7 @@ class SmallAsteroid(Sprite):
         self.x1 = 7.5 + random.randint(-3,3)
         self.y1 = 0 + random.randint(-3,3)
         self.x2 = 15 + random.randint(-3,3)
-        self.y2 = 0 + random.randint(-2.5,3)
+        self.y2 = 0 + random.randint(-3,3)
         self.x3 = 22.5 + random.randint(-3,3)
         self.y3 = 7.5 + random.randint(-3,3)
         self.x4 = 22.5 + random.randint(-3,3)
