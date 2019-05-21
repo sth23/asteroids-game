@@ -191,9 +191,17 @@ class AsteroidsGame(App):
         self.mediumhit = []
         self.smallhit = []
         
-        BigAsteroid(self.width, self.height)
+        self.count = 0
+        self.randx = 0
+        self.randy = 0
+        self.random = 0
         
     def step(self):
+        # Randomly create big asteroids that drift onto screen
+        if count % 1000 == 0:
+            self.random = random.randint(0,3)
+            print(self.random)
+        
         for ship in self.getSpritesbyClass(Ship):
             ship.step()
             # Wrap screen for player
