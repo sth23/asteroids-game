@@ -19,13 +19,12 @@ class Asteroid(Sprite):
             self.xcoordinates = [x + random.randint(-self.range, self.range) for x in self.xcoordinates]
             self.ycoordinates = [y + random.randint(-self.range, self.range) for y in self.ycoordinates]
         elif size == "medium":
-            self.range = self.range / 2
-            print(self.range)
+            self.range = int(self.range / 2)
             self.radius / 2
             self.xcoordinates = [x / 2 + random.randint(-self.range, self.range) for x in self.xcoordinates]
             self.ycoordinates = [y / 2 + random.randint(-self.range, self.range) for y in self.ycoordinates]
         else:
-            self.range = self.range / 4
+            self.range = int(self.range / 4)
             self.radius / 4
             self.xcoordinates = [x / 4 + random.randint(-self.range, self.range) for x in self.xcoordinates]
             self.ycoordinates = [y / 4 + random.randint(-self.range, self.range) for y in self.ycoordinates]
