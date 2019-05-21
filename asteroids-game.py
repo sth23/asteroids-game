@@ -136,6 +136,10 @@ class AsteroidsGame(App):
                 bullet.destroy()
             elif bullet.y > self.height + 5 or bullet.y < -5:
                 bullet.destroy()
+            else:
+                for big in bullet.collidingWithSprites(BigAsteroid):
+                    big.destroy()
+                    bullet.destroy()
         
         # Wrap screen for player
         if self.player1.x > self.width + 20:
