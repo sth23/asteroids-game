@@ -254,7 +254,7 @@ class AsteroidsGame(App):
                 self.mediumhit = bullet.collidingWithSprites(MediumAsteroid)
                 self.smallhit = bullet.collidingWithSprites(SmallAsteroid)
                 if self.bighit != []:
-                    for big in self.bithit:
+                    for big in self.bighit:
                         MediumAsteroid((big.x + math.sin(big.rotation)*90/4, big.y + math.cos(big.rotation)*90/4))
                         MediumAsteroid((big.x - math.sin(big.rotation)*90/4, big.y + math.cos(big.rotation)*90/4))
                         MediumAsteroid((big.x + math.sin(big.rotation)*90/4, big.y - math.cos(big.rotation)*90/4))
