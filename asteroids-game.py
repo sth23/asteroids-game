@@ -201,13 +201,13 @@ class AsteroidsGame(App):
         if self.count % 2500 == 0:
             self.random = random.randint(0,3)
             if self.random == 0:
-                BigAsteroid((random.randint(0, self.width), -85))
+                BigAsteroid((random.randint(0, self.width), -45))
             elif self.random == 1:
-                BigAsteroid((self.width + 85, random.randint(0, self.height)))
+                BigAsteroid((self.width + 45, random.randint(0, self.height)))
             elif self.random == 2:
-                BigAsteroid((random.randint(0, self.width), self.height + 85))
+                BigAsteroid((random.randint(0, self.width), self.height + 45))
             else:
-                BigAsteroid((-85, random.randint(0, self.height)))
+                BigAsteroid((-45, random.randint(0, self.height)))
         self.count += 1
         
         for ship in self.getSpritesbyClass(Ship):
