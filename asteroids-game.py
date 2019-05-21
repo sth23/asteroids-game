@@ -230,6 +230,7 @@ class AsteroidsGame(App):
         self.player1.extralives -= 1
         self.showExtraLives()
         self.count = 0
+        print(self.player1.extralives)
         
     def step(self):
         # Randomly create big asteroids that drift onto screen
