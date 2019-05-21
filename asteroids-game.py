@@ -196,7 +196,14 @@ class AsteroidsGame(App):
         self.randy = 0
         self.random = 0
         self.score = 0
+        self.extralives = 3
         print("Score: " + str(self.score))
+        
+    def resetScreen(self):
+        [big.destroy() for big in self.getSpritesbyClass(BigAsteroid)]
+        [medium.destroy() for medium in self.getSpritesbyClass(MediumAsteroid)]
+        [small.destroy() for small in self.getSpritesbyClass[SmallAsteroid)]
+        Ship((self.width / 2, self.height / 2), self.width, self.height)
         
     def step(self):
         # Randomly create big asteroids that drift onto screen
@@ -226,10 +233,13 @@ class AsteroidsGame(App):
                 
             if ship.collidingWithSprites(BigAsteroid):
                 ship.destroy()
+                self.resetScreen()
             elif ship.collidingWithSprites(MediumAsteroid):
                 ship.destroy()
+                self.resetScreen()
             elif ship.collidingWithSprites(SmallAsteroid):
                 ship.destroy()
+                self.resetScreen()
         
         for big in self.getSpritesbyClass(BigAsteroid):
             big.step()
