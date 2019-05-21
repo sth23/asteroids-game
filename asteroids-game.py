@@ -152,15 +152,34 @@ class Ship(Sprite):
 class AsteroidsGame(App):
     def __init__(self):
         super().__init__()
-        self.player1 = Ship((self.width / 2, self.height / 2), self.width, self.height)
+        Ship((self.width / 2, self.height / 2), self.width, self.height)
         
         BigAsteroid(self.width, self.height)
         
     def step(self):
-        self.player1.step()
+        for ship in self.getSpritesbyClass(Ship)
+            ship.step()
+            # Wrap screen for player
+            if ship.x > self.width + 20:
+                ship.x = -20
+            elif ship.x < -20:
+                ship.x = self.width + 20
+            if ship.y > self.height + 20:
+                ship.y = -20
+            elif ship.y < -20:
+                ship.y = self.height + 20
         
         for big in self.getSpritesbyClass(BigAsteroid):
             big.step()
+            # Wrap screen for player
+            if big.x > self.width + 90:
+                big.x = -90
+            elif big.x < -90:
+                big.x = self.width + 90
+            if big.y > self.height + 90:
+                big.y = -90
+            elif big.y < -90:
+                big.y = self.height + 90
             
         for medium in self.getSpritesbyClass(MediumAsteroid):
             medium.step()
@@ -184,15 +203,7 @@ class AsteroidsGame(App):
                     medium.destroy()
                     bullet.destroy()
         
-        # Wrap screen for player
-        if self.player1.x > self.width + 20:
-            self.player1.x = -20
-        elif self.player1.x < -20:
-            self.player1.x = self.width + 20
-        if self.player1.y > self.height + 20:
-            self.player1.y = -20
-        elif self.player1.y < -20:
-            self.player1.y = self.height + 20
+
         
 myapp = AsteroidsGame()
 myapp.run()
