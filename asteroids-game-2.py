@@ -12,7 +12,7 @@ class Asteroid(Sprite):
         self.size = size
         self.xcoordinates = [30, 60, 90, 90, 60, 30, 0, 0]
         self.ycoordinates = [0, 0, 30, 60, 90, 90, 60, 30]
-        self.range = 12
+        self.range = 8
         self.radius = 50
         self.points = [None] * 8
         self.speed = 1
