@@ -198,7 +198,7 @@ class AsteroidsGame(App):
         
     def step(self):
         # Randomly create big asteroids that drift onto screen
-        if self.count % 1500 == 0:
+        if self.count % 1000 == 0:
             self.random = random.randint(0,3)
             print("New Asteroid")
             if self.random == 0:
