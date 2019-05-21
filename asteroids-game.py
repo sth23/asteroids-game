@@ -187,6 +187,10 @@ class AsteroidsGame(App):
         super().__init__()
         Ship((self.width / 2, self.height / 2), self.width, self.height)
         
+        self.bithit = []
+        self.mediumhit = []
+        self.smallhit = []
+        
         BigAsteroid(self.width, self.height)
         
     def step(self):
@@ -241,28 +245,34 @@ class AsteroidsGame(App):
         for bullet in self.getSpritesbyClass(Bullet):
             bullet.step()
             
-            if bullet.x > self.width + 5 or bullet.x < -5:
+            if bullet.x > self.width + 50 or bullet.x < -50:
                 bullet.destroy()
-            elif bullet.y > self.height + 5 or bullet.y < -5:
+            elif bullet.y > self.height + 50 or bullet.y < -50:
                 bullet.destroy()
             else:
-                for big in bullet.collidingWithSprites(BigAsteroid):
-                    MediumAsteroid((big.x + math.sin(big.rotation)*90/4, big.y + math.cos(big.rotation)*90/4))
-                    MediumAsteroid((big.x - math.sin(big.rotation)*90/4, big.y + math.cos(big.rotation)*90/4))
-                    MediumAsteroid((big.x + math.sin(big.rotation)*90/4, big.y - math.cos(big.rotation)*90/4))
-                    MediumAsteroid((big.x - math.sin(big.rotation)*90/4, big.y - math.cos(big.rotation)*90/4))
-                    big.destroy()
-                    bullet.destroy()
-                for medium in bullet.collidingWithSprites(MediumAsteroid):
-                    SmallAsteroid((medium.x + math.sin(medium.rotation)*90/8, medium.y + math.cos(medium.rotation)*90/8))
-                    SmallAsteroid((medium.x - math.sin(medium.rotation)*90/8, medium.y + math.cos(medium.rotation)*90/8))
-                    SmallAsteroid((medium.x + math.sin(medium.rotation)*90/8, medium.y - math.cos(medium.rotation)*90/8))
-                    SmallAsteroid((medium.x - math.sin(medium.rotation)*90/8, medium.y - math.cos(medium.rotation)*90/8))
-                    medium.destroy()
-                    bullet.destroy()
-                for small in bullet.collidingWithSprites(SmallAsteroid):
-                    small.destroy()
-                    bullet.destroy()
+                self.bighit = bullet.collidingWithSprites(BigAsteroid)
+                self.mediumhit = bullet.collidingWithSprites(MediumAsteroid)
+                self.smallhit = bullet.collidingWithSprites(SmallAsteroid)
+                if self.bighit:
+                    for big in self.bithit:
+                        MediumAsteroid((big.x + math.sin(big.rotation)*90/4, big.y + math.cos(big.rotation)*90/4))
+                        MediumAsteroid((big.x - math.sin(big.rotation)*90/4, big.y + math.cos(big.rotation)*90/4))
+                        MediumAsteroid((big.x + math.sin(big.rotation)*90/4, big.y - math.cos(big.rotation)*90/4))
+                        MediumAsteroid((big.x - math.sin(big.rotation)*90/4, big.y - math.cos(big.rotation)*90/4))
+                        big.destroy()
+                        bullet.destroy()
+                elif self.mediumhit:
+                    for medium in self.mediumhit:
+                        SmallAsteroid((medium.x + math.sin(medium.rotation)*90/8, medium.y + math.cos(medium.rotation)*90/8))
+                        SmallAsteroid((medium.x - math.sin(medium.rotation)*90/8, medium.y + math.cos(medium.rotation)*90/8))
+                        SmallAsteroid((medium.x + math.sin(medium.rotation)*90/8, medium.y - math.cos(medium.rotation)*90/8))
+                        SmallAsteroid((medium.x - math.sin(medium.rotation)*90/8, medium.y - math.cos(medium.rotation)*90/8))
+                        medium.destroy()
+                        bullet.destroy()
+                elif self.smallhit:
+                    for small in bullet.collidingWithSprites(SmallAsteroid):
+                        small.destroy()
+                        bullet.destroy()
         
 myapp = AsteroidsGame()
 myapp.run()
