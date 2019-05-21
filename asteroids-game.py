@@ -180,6 +180,9 @@ class AsteroidsGame(App):
                     MediumAsteroid((big.x - math.sin(big.rotation)*90/4, big.y - math.cos(big.rotation)*90/4))
                     big.destroy()
                     bullet.destroy()
+                for medium in bullet.collidingWithSprites(MediumAsteroid):
+                    medium.destroy()
+                    bullet.destroy()
         
         # Wrap screen for player
         if self.player1.x > self.width + 20:
