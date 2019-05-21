@@ -213,6 +213,8 @@ class AsteroidsGame(App):
         print("Score: " + str(self.score))
         
     def showExtraLives(self):
+        for x in self.getSpritesbyClass(ExtraLife):
+            x.destroy()
         for x in range(0,self.player1.extralives):
             ExtraLife((10 + x * 15, self.height - 20))
         
@@ -224,6 +226,8 @@ class AsteroidsGame(App):
         self.player1.y = self.height / 2
         self.player1.vx = 0
         self.player1.vy = 0
+        self.player1.extralives -= 1
+        self.showExtraLives()
         self.count = 0
         
     def step(self):
