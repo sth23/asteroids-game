@@ -171,7 +171,7 @@ class AsteroidsGame(App):
         
         for big in self.getSpritesbyClass(BigAsteroid):
             big.step()
-            # Wrap screen for player
+            # Wrap screen for big asteroids
             if big.x > self.width + 90:
                 big.x = -90
             elif big.x < -90:
@@ -183,6 +183,16 @@ class AsteroidsGame(App):
             
         for medium in self.getSpritesbyClass(MediumAsteroid):
             medium.step()
+            # Wrap screen for big asteroids
+            if medium.x > self.width + 45:
+                medium.x = -45
+            elif medium.x < -45:
+                medium.x = self.width + 45
+            if medium.y > self.height + 45:
+                medium.y = -45
+            elif medium.y < -45:
+                medium.y = self.height + 45
+            
         
         for bullet in self.getSpritesbyClass(Bullet):
             bullet.step()
