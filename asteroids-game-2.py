@@ -44,6 +44,8 @@ class BigAsteroid(Sprite):
             
         for z in range(0,8):
             self.points[z] = (self.xcoordinates[z], self.ycoordinates[z])
+            
+        print(self.points)
 
         self.poly = PolygonAsset(self.points, noline, black)
         
