@@ -29,7 +29,7 @@ class BigAsteroid(Sprite):
         self.poly = PolygonAsset(self.points, noline, black)
         
         super().__init__(self.poly, (100,100))
-        self.speed = 2
+        self.speed = 1
         self.rotation = 0
         self.vx = self.speed * math.sin(self.rotation)
         self.vy = self.speed * math.cos(self.rotation)
@@ -71,7 +71,7 @@ class Ship(Sprite):
         self.maxspin = 1
         self.thrust = 0.1
         self.vx = 0
-        self.vy = 0.5
+        self.vy = 0
         self.vr = 0
         self.deltavx = 0
         self.deltavy = 0
