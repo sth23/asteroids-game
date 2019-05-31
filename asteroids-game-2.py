@@ -103,7 +103,7 @@ class Ship(Sprite):
         AsteroidsGame.listenKeyEvent("keydown", "up arrow", self.thrustOn)
 
     def shoot(self, event):
-        if self.extralives >= 0 and self.shootcooldown > 10:
+        if self.extralives >= 0 and self.shootcooldown > 5:
             Bullet((self.x - 15 * math.sin(self.rotation), self.y - 15 * math.cos(self.rotation)), self.rotation)
             self.shootcooldown = 0
 
@@ -139,7 +139,6 @@ class Ship(Sprite):
             self.y += self.vy
             self.rotation += self.vr
             self.shootcooldown += 1
-            print(self.shootcooldown)
             
 class ShipPiece(Sprite):
     tri = PolygonAsset([(7.5,0), (15,0), (0,15)], noline, black)
