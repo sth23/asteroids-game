@@ -103,7 +103,7 @@ class Ship(Sprite):
         AsteroidsGame.listenKeyEvent("keydown", "up arrow", self.thrustOn)
 
     def shoot(self, event):
-        if self.extralives >= 0 & self.shootcooldown > 10:
+        if self.extralives >= 0 and self.shootcooldown > 10:
             Bullet((self.x - 15 * math.sin(self.rotation), self.y - 15 * math.cos(self.rotation)), self.rotation)
             self.shootcooldown = 0
 
