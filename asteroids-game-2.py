@@ -139,6 +139,7 @@ class Ship(Sprite):
             self.y += self.vy
             self.rotation += self.vr
             self.shootcooldown += 1
+            print(self.shootcooldown)
             
 class ShipPiece(Sprite):
     tri = PolygonAsset([(7.5,0), (15,0), (0,15)], noline, black)
