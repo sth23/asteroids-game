@@ -93,7 +93,7 @@ class Ship(Sprite):
         self.fxcenter = self.fycenter = 0.5
         self.extralives = 3
         
-        AsteroidsGame.listenKeyEvent("keydown", "space", self.shoot)
+        AsteroidsGame.listenKeyEvent("keyup", "space", self.shoot)
 
         AsteroidsGame.listenKeyEvent("keydown", "right arrow", self.rotateRightOn)
         AsteroidsGame.listenKeyEvent("keyup", "right arrow", self.rotateRightOff)
