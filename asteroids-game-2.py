@@ -92,8 +92,10 @@ class Ship(Sprite):
         self.speed = 0
         self.fxcenter = self.fycenter = 0.5
         self.extralives = 3
+        self.canshoot = True
         
-        AsteroidsGame.listenKeyEvent("keyup", "space", self.shoot)
+        AsteroidsGame.listenKeyEvent("keydown", "space", self.shoot)
+        AsteroidsGame.listenKeyEvent("keyup", "space", self.shootCoolDown)
 
         AsteroidsGame.listenKeyEvent("keydown", "right arrow", self.rotateRightOn)
         AsteroidsGame.listenKeyEvent("keyup", "right arrow", self.rotateRightOff)
@@ -104,6 +106,10 @@ class Ship(Sprite):
     def shoot(self, event):
         if self.extralives >= 0:
             Bullet((self.x - 15 * math.sin(self.rotation), self.y - 15 * math.cos(self.rotation)), self.rotation)
+            self.canshoot = False
+            
+    def shootCoolDown(self, event):
+        self.canshoot = True
 
     def rotateRightOn(self, event):
         if self.extralives >= 0:
