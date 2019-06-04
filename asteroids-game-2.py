@@ -37,7 +37,7 @@ class Asteroid(Sprite):
 
         self.poly = PolygonAsset(self.points, noline, black)
         
-        super().__init__(self.poly, position) #, CircleAsset(self.radius))
+        super().__init__(self.poly, position, self.poly)
         
 
         self.rotation = random.random() * 2 * math.pi
